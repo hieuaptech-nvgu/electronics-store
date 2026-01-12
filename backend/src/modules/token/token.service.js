@@ -1,25 +1,43 @@
 const JwtUtils = require("../../utils/jwt");
-const tokenSchema = require("./token.schema");
-class TokenService{
-    async generateAuthTokens(user){
-        const payload = {
-            id: user._id,
-            roles: user.roles,
-        }
+const TokenRepository = require("./token.repository");
 
-        const accessToken = JwtUtils.createAccessToken(payload);
-        const refreshToken = JwtUtils.createRefreshToken(payload);
+class TokenService {
+  async generateAuthTokens(user) {
+    const payload = {
+      id: user._id,
+      roles: user.roles,
+    };
 
-        await tokenSchema.create({
-            userId: user._id,
-            token: refreshToken,
-        })
+    const accessToken = JwtUtils.createAccessToken(payload);
+    const refreshToken = JwtUtils.createRefreshToken(payload);
 
-        return {
-            accessToken,
-            refreshToken
-        }
+    await TokenRepository.deactivateByUser(user._id);
+
+    await TokenRepository.create({
+      userId: user._id,
+      token: refreshToken,
+    });
+
+    return {
+      accessToken,
+      refreshToken,
+    };
+  }
+
+  async refreshAuthTokens(refreshToken) {
+    const payload = JwtUtils.verifyRefreshToken(refreshToken);
+    const token = await TokenRepository.findByToken(refreshToken);
+    if(!token){
+        throw new Error("Refresh token not found");
     }
 
-    
+    await TokenRepository.deactivateByToken(refreshToken);
+
+    const newPayload = {
+        userId: payload.id,
+        roles: payload.roles,
+    }
+  }
 }
+
+module.exports = new TokenService();

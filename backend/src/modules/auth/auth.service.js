@@ -1,4 +1,4 @@
-const userSchema = require("./user.schema");
+const userSchema = require("../user/user.schema");
 const HashUtils = require("../../utils/hash");
 
 class AuthService{

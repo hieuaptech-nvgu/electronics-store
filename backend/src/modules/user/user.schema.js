@@ -13,12 +13,14 @@ const userSchema = new mongoose.Schema({
         trim: true,
         unique: true,
         lowercase: true,
+        index: true,
     },
 
     phone: {
         type: String,
         required: false,
         trim: true,
+        index: true,
     },
 
     password: {
@@ -36,7 +38,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: ["user", "admin"],
         default: "user",
-    
+    },
+
+    isDeleted:{
+        type: Boolean,
+        default: false,
     },
 
     isActive: {
