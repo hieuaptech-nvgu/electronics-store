@@ -5,8 +5,8 @@ class UserRepository {
     return await User.create(user);
   }
 
-  async findById(id) {
-    return await User.findById(id).where({ isDeleted: false, isActive: true });
+  async findByIdActive(id) {
+    return await User.findOne({_id: id, isDeleted: false, isActive: true});
   }
 
   async findByEmail(email) {
@@ -41,8 +41,15 @@ class UserRepository {
     return await User.find({ isDeleted: true });
   }
 
+  async findByIdNotDeleted(id) {
+    return await User.findOne({
+      _id: id,
+      isDeleted: false,
+    });
+  }
+
   async deactivate(id) {
-    return await User.findByIdAndUpdate(id, { isActive: false }, { new: true });
+    return await User.findOneAndUpdate( { _id: id, isDeleted: false }, { isActive: false }, { new: true });
   }
 
   async activate(id) {
@@ -54,8 +61,8 @@ class UserRepository {
   }
 
   async softDelete(id) {
-    return await User.findByIdAndUpdate(
-      id,
+    return await User.findOneAndUpdate(
+      {_id: id, isDeleted: false},
       { isDeleted: true, isActive: false },
       { new: true }
     );
@@ -74,6 +81,7 @@ class UserRepository {
       {
         _id: id,
         isDeleted: false,
+        isActive: true,
       },
       data,
       { new: true }

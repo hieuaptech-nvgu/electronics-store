@@ -36,13 +36,9 @@ class UserService {
 
   async updateUser(id, data) {
     const { fullName, email, phone, password, address, roles } = data;
-    const user = await UserRepository.findById(id);
+    const user = await UserRepository.findByIdNotDeleted(id);
     if (!user) {
       throw new Error("User not found");
-    }
-
-    if(!user.isActive){
-      throw new Error("The user has been locked");
     }
 
     if (phone && phone !== user.phone) {
@@ -77,15 +73,49 @@ class UserService {
 
     const updatedUser = await UserRepository.update(id, updateData);
 
+    if(!updatedUser){
+      throw new Error("User not found or locked")
+    }
+
     return updatedUser 
   }
 
   async getMyProfile(id){
-    const user = await UserRepository.findById(id);
+    const user = await UserRepository.findByIdActive(id);
     if(!user){
       throw new Error("User not found");
     }
     return user
+  }
+
+  async activateUser(id){
+    const user = await UserRepository.findByIdNotDeleted(id)
+    if(!user){
+      throw new Error("User not found");
+    }
+    if(user.isActive){
+      throw new Error("User already active");
+    }
+    return await UserRepository.activate(id)
+  }
+
+  async deactivateUser(id){
+    const user = await UserRepository.findByIdNotDeleted(id)
+    if(!user){
+      throw new Error("User not found");
+    }
+    if(!user.isActive){
+      throw new Error("User already inactive");
+    }
+    return await UserRepository.deactivate(id);
+  }
+
+  async deleteUser(id){
+    const user = await UserRepository.findByIdActive(id);
+    if(!user){
+      throw new Error("User not found");
+    }
+    return await UserRepository.softDelete(id);
   }
 }
 
