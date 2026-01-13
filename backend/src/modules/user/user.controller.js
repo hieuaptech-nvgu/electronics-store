@@ -1,4 +1,3 @@
-const userRepository = require("./user.repository");
 const UserService = require("./user.service");
 
 class UserController{
@@ -28,6 +27,25 @@ class UserController{
             const id = req.params.id;
             const user = await UserService.getMyProfile(id);
             res.status(200).json({message: "get profile successful", data: user});
+        }catch(error){
+            next(error);
+        }
+    }
+    async activateUser(req, res, next){
+        try{
+            const id = req.params.id;
+            const user = await UserService.activateUser(id);
+            res.status(200).json({message: "User unlocked successfully", data: user})
+        }catch(error){
+            next(error);
+        }
+    }
+
+    async deactivateUser(req, res, next){
+        try{
+            const id = req.params.id;
+            const user = await UserService.deactivateUser(id);
+            res.status(200).json({message: "User locked successfully", data: user})
         }catch(error){
             next(error);
         }
