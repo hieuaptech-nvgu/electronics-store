@@ -24,20 +24,20 @@ class TokenService {
     };
   }
 
-  async refreshAuthTokens(refreshToken) {
-    const payload = JwtUtils.verifyRefreshToken(refreshToken);
-    const token = await TokenRepository.findByToken(refreshToken);
-    if(!token){
-        throw new Error("Refresh token not found");
-    }
+  // async refreshAuthTokens(refreshToken) {
+  //   const payload = JwtUtils.verifyRefreshToken(refreshToken);
+  //   const token = await TokenRepository.findByToken(refreshToken);
+  //   if(!token){
+  //       throw new Error("Refresh token not found");
+  //   }
 
-    await TokenRepository.deactivateByToken(refreshToken);
+  //   await TokenRepository.deactivateByToken(refreshToken);
 
-    const newPayload = {
-        userId: payload.id,
-        roles: payload.roles,
-    }
-  }
+  //   const newPayload = {
+  //       userId: payload.id,
+  //       roles: payload.roles,
+  //   }
+  // }
 }
 
 module.exports = new TokenService();

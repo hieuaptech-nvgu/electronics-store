@@ -6,4 +6,5 @@ const {validateCreateUser, validateUpdateUser} = require("../../middlewares/vali
 router.post("/user", validateCreateUser, UserController.createUser);
 router.patch("/user/:id", validateUpdateUser, UserController.updateUser);
 
+
 module.exports = router;

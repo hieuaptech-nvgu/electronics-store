@@ -1,3 +1,4 @@
+const userRepository = require("./user.repository");
 const UserService = require("./user.service");
 
 class UserController{
@@ -17,6 +18,16 @@ class UserController{
           const id = req.params.id;
           const user = await UserService.updateUser(id, req.body);
           res.status(200).json({message: "User updated successful", data: user})
+        }catch(error){
+            next(error);
+        }
+    }
+
+    async getMyProfile(req, res, next){
+        try{
+            const id = req.params.id;
+            const user = await UserService.getMyProfile(id);
+            res.status(200).json({message: "get profile successful", data: user});
         }catch(error){
             next(error);
         }
