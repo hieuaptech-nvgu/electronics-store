@@ -9,7 +9,7 @@ app.use(express.json())
 database.connection();
 
 //init routers
-app.use("/api", require("./modules/user/user.route"));
-app.use("/api", require("./modules/auth/auth.route"));
+app.use("/api/user", require("./modules/user/user.route"));
+app.use("/api/auth", require("./modules/auth/auth.route"));
 
 module.exports = app;

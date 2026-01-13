@@ -1,4 +1,5 @@
 const JwtUtils = require("../../utils/jwt");
+const UserRepository = require("../user/user.repository");
 const TokenRepository = require("./token.repository");
 
 class TokenService {
@@ -24,20 +25,35 @@ class TokenService {
     };
   }
 
-  // async refreshAuthTokens(refreshToken) {
-  //   const payload = JwtUtils.verifyRefreshToken(refreshToken);
-  //   const token = await TokenRepository.findByToken(refreshToken);
-  //   if(!token){
-  //       throw new Error("Refresh token not found");
-  //   }
+  async refreshAuthTokens(refreshToken) {
+    let payload;
 
-  //   await TokenRepository.deactivateByToken(refreshToken);
+    try {
+      payload = JwtUtils.verifyRefreshToken(refreshToken);
+    } catch (error) {
+      throw new Error("Invalid or expired refresh token");
+    }
 
-  //   const newPayload = {
-  //       userId: payload.id,
-  //       roles: payload.roles,
-  //   }
-  // }
+    const storedToken = await TokenRepository.findByToken(refreshToken);
+
+    if (!storedToken) {
+      throw new Error("Refresh token not found or revoked");
+    }
+
+    await TokenRepository.deactivateByToken(refreshToken);
+
+    const user = await UserRepository.findByIdActive(payload.id);
+
+    if (!user) {
+      throw new Error("User not found or inactive");
+    }
+
+    const newToken = await this.generateAuthTokens(user);
+
+    return newToken;
+  }
+
+
 }
 
 module.exports = new TokenService();

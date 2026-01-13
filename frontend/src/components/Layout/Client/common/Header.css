@@ -1,0 +1,64 @@
+.header-top {
+  background-color: #000000;
+}
+
+.header-top-address {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 0px;
+}
+
+.header-main {
+  background-color: #e2e2e2;
+  padding: 15px 0px;
+}
+
+.box-search {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.box-search:focus-within {
+  border-color: #FFD700; /* viền vàng */
+}
+
+
+.header-search {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 9px 50px 10px 15px;
+  border-radius: 5px;
+}
+
+.search-action{
+    width: 70px;
+    padding: 3px;
+}
+
+.header-auth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.header-box-text{
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-cart{
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    gap: 8px;
+}

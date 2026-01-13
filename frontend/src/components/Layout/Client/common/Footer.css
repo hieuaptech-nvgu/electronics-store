@@ -1,0 +1,62 @@
+.footer-newsletter {
+  background-color: #009dde;
+  padding: 25px 0px;
+}
+
+.newsletter-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.newsletter-sub {
+  font-size: 14px;
+  font-weight: 300;
+  color: #fff;
+}
+
+.newsletter-info {
+  text-align: right;
+}
+
+.newsletter-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 8px 8px 8px 0px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.newsletter-action {
+  width: 70px;
+  padding: 3px;
+}
+
+.newsletter-email{
+    padding: 5px;
+}
+
+.footer-main{
+    padding: 30px 0px;
+}
+.footer-title{
+    font-size: 18px;
+    font-weight: 700;
+    padding: 12px 0px;
+}
+
+.footer-description{
+    font-size: 14px;
+    color: #687686;
+}
