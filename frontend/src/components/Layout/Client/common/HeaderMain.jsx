@@ -27,7 +27,7 @@ const HeaderMain = () => {
                 placeholder="Tìm kiếm sản phẩm..."
               />
               <div className="search-action">
-                <Button content={<Search />} />
+                <Button content={<Search />} primary={true} />
               </div>
             </div>
           </Col>

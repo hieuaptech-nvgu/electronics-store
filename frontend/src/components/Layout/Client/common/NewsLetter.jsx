@@ -33,7 +33,7 @@ const NewsLetter = () => {
                 placeholder="Vui lòng nhập email của bạn..."
               />
               <div className="newsletter-action">
-                <Button content={<Search />} />
+                <Button content={"Đăng ký"} primary={true} />
               </div>
             </div>
           </Col>
