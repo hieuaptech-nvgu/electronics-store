@@ -1,6 +1,6 @@
 // footer.mock.js
 import FooterLogo from "../../../../assets/images/footerLogo.png";
-import { Facebook } from "lucide-react";
+
 
 export const footerAbout = {
   title: "Về TTG",

@@ -4,7 +4,7 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import Logo from "../../../../assets/images/logo.png";
 import { Search } from "lucide-react";
-import Button from "../../../../components/Button/Button";
+import Button from "../../../Button/Button";
 import { User } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import { ShoppingBag } from "lucide-react";
@@ -14,12 +14,12 @@ const HeaderMain = () => {
     <div className="header-main">
       <Container>
         <Row className="d-flex align-items-center">
-          <Col md={2}>
+          <Col md={3}>
             <Link to="/">
               <img src={Logo} alt="" />
             </Link>
           </Col>
-          <Col md={7}>
+          <Col md={6}>
             <div className="box-search">
               <input
                 className="header-search"

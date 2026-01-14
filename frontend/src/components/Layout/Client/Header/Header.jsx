@@ -1,8 +1,7 @@
 import React from 'react';
-import HeaderTop
- from './common/HeaderTop';
-import HeaderMain from './common/HeaderMain';
-import HeaderBottom from './common/HeaderBottom';
+import HeaderTop from './HeaderTop';
+import HeaderMain from './HeaderMain';
+import HeaderBottom from './HeaderBottom';
 const Header = () => {
     return (
         <section className='header'>

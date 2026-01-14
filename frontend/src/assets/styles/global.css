@@ -1,3 +1,6 @@
+@import url("./variables.css");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
 /* reset cơ bản */
 * {
   margin: 0;
@@ -8,4 +11,10 @@
 body {
   font-family: sans-serif;
   line-height: 1.5;
+  background-color: #f2f3f5;
+  font-family: "Quicksand", sans-serif;
+}
+
+.ratio-16x11 {
+  --bs-aspect-ratio: calc(11 / 16 * 100%);
 }

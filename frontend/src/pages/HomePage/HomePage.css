@@ -1,0 +1,12 @@
+.box-heroes{
+    padding: 15px 0px;
+}
+
+.box-banner{
+    padding: 15px 0px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 10px;
+}
+

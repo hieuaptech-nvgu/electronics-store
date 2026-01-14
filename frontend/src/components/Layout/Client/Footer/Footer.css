@@ -44,7 +44,7 @@
 }
 
 .newsletter-email{
-    padding: 5px;
+    padding: 10px;
 }
 
 .footer-main{
@@ -57,6 +57,17 @@
 }
 
 .footer-description{
-    font-size: 14px;
+    font-size: 13px;
     color: #687686;
+}
+
+.footer-bottm{
+  border-top: 1px solid #e1e1e1;
+}
+
+.footer-copyright{
+    font-size: 13px;
+    color: #687686;
+    text-align: center;
+    padding: 15px 0;
 }
