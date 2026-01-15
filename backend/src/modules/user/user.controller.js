@@ -6,7 +6,7 @@ class UserController{
             const user = await UserService.createUser(req.body);
             res
               .status(201)
-              .json({ message: "Created user successful", data: user });
+              .json({ message: "User created successful", data: user });
         }catch(error){
             next(error);
         }

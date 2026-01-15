@@ -6,7 +6,7 @@ class UserRepository {
   }
 
   async findByIdActive(id) {
-    return await User.findOne({_id: id, isDeleted: false, isActive: true});
+    return await User.findOne({ _id: id, isDeleted: false, isActive: true });
   }
 
   async findByEmail(email) {
@@ -49,7 +49,11 @@ class UserRepository {
   }
 
   async deactivate(id) {
-    return await User.findOneAndUpdate( { _id: id, isDeleted: false }, { isActive: false }, { new: true });
+    return await User.findOneAndUpdate(
+      { _id: id, isDeleted: false },
+      { isActive: false },
+      { new: true }
+    );
   }
 
   async activate(id) {
@@ -60,9 +64,17 @@ class UserRepository {
     );
   }
 
+  async restore(id) {
+    return await User.findOneAndUpdate(
+      { _id: id, isDeleted: false },
+      { isDeleted: false, isActive: true },
+      { new: true }
+    );
+  }
+
   async softDelete(id) {
     return await User.findOneAndUpdate(
-      {_id: id, isDeleted: false},
+      { _id: id, isDeleted: false },
       { isDeleted: true, isActive: false },
       { new: true }
     );

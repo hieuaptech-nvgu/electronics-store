@@ -4,7 +4,7 @@ const UserController = require("./user.controller");
 const {
   validateCreateUser,
   validateUpdateUser,
-} = require("../../middlewares/validator.user");
+} = require("../../middlewares/user.middleware");
 const { verifyAdmin } = require("../../middlewares/admin.middleware");
 const { verifyAccessToken } = require("../../middlewares/auth.middleware");
 
