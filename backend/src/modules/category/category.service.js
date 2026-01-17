@@ -1,37 +1,38 @@
 const CategoryRepository = require("./category.repository");
+const HttpError = require("../../utils/error");
 
 class CategoryService {
   async createCategory(data) {
     const { name, slug } = data;
+
     const duplicateSlug = await CategoryRepository.existsBySlug(slug);
     if (duplicateSlug) {
-      throw new Error("Slug already exists");
+      throw new HttpError(400, "Slug already exists");
     }
 
-    const newCategory = await CategoryRepository.create({
-      name,
-      slug,
-    });
-
-    return newCategory;
+    return await CategoryRepository.create({ name, slug });
   }
 
-  async findCategoryById(id){
+  async findCategoryById(id) {
     const category = await CategoryRepository.findByIdNotDeleted(id);
+    if (!category) {
+      throw new HttpError(404, "Category not found");
+    }
     return category;
   }
 
   async updateCategory(id, data) {
     const { name, slug } = data;
+
     const category = await CategoryRepository.findByIdNotDeleted(id);
     if (!category) {
-      throw new Error("Category not found");
+      throw new HttpError(404, "Category not found");
     }
 
     if (slug && slug !== category.slug) {
       const duplicateSlug = await CategoryRepository.existsBySlug(slug);
       if (duplicateSlug) {
-        throw new Error("Slug already exists");
+        throw new HttpError(400, "Slug already exists");
       }
     }
 
@@ -40,42 +41,38 @@ class CategoryService {
     if (slug !== undefined) updateData.slug = slug;
 
     const updatedCategory = await CategoryRepository.update(id, updateData);
-
     if (!updatedCategory) {
-      throw new Error("Category not found or locked");
+      throw new HttpError(409, "Category is locked or deleted");
     }
 
     return updatedCategory;
   }
 
-  async findAllCategoryActive(){
-    return await CategoryRepository.findAllActive();
+  async findAllCategoryActive() {
+    const categories = await CategoryRepository.findAllActive();
+    return categories; 
   }
 
   async activateCategory(id) {
     const category = await CategoryRepository.activate(id);
-
     if (!category) {
-      throw new Error("Category not found or deleted");
+      throw new HttpError(404, "Category not found or deleted");
     }
-
     return category;
   }
 
   async deactivateCategory(id) {
     const category = await CategoryRepository.deactivate(id);
-
     if (!category) {
-      throw new Error("Category not found or deleted");
+      throw new HttpError(404, "Category not found or deleted");
     }
-
     return category;
   }
 
   async restoreCategory(id) {
     const category = await CategoryRepository.restore(id);
     if (!category) {
-      throw new Error("Category not found");
+      throw new HttpError(404, "Category not found");
     }
     return category;
   }
@@ -83,7 +80,7 @@ class CategoryService {
   async softDeleteCategory(id) {
     const category = await CategoryRepository.findByIdNotDeleted(id);
     if (!category) {
-      throw new Error("Category not found");
+      throw new HttpError(404, "Category not found");
     }
     return await CategoryRepository.softDelete(id);
   }
