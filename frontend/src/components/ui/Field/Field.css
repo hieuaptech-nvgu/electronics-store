@@ -1,0 +1,107 @@
+/* Wrapper */
+.ui-field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Label */
+.ui-field__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+/* Control */
+.ui-field-control {
+  position: relative;
+  width: 100%;
+}
+
+/* Input base */
+.ui-field {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--color-bg-section);
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+/* Size */
+.ui-field--sm {
+  height: 32px;
+  font-size: 12px;
+}
+
+.ui-field--md {
+  height: 38px;
+}
+
+.ui-field--lg {
+  height: 44px;
+  font-size: 16px;
+}
+
+/* Padding when icons exist */
+.ui-field--has-left-icon {
+  padding-left: 36px;
+}
+
+.ui-field--has-right-icon {
+  padding-right: 36px;
+}
+
+/* Icon */
+.ui-field__icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+}
+
+.ui-field__icon--left {
+  left: 10px;
+}
+
+.ui-field__icon--right {
+  right: 0;
+}
+
+/* Focus */
+.ui-field:focus {
+  border-color: var(--color-brand-primary);
+  box-shadow: 0 0 0 2px rgba(249, 187, 1, 0.2);
+}
+
+/* Variant */
+.ui-field--success {
+  border-color: var(--color-success);
+}
+
+.ui-field--error {
+  border-color: var(--color-danger);
+}
+
+/* Disabled */
+.ui-field--disabled {
+  background-color: var(--color-bg-section);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Message */
+.ui-field__message {
+  font-size: 12px;
+}
+
+.ui-field__message--error {
+  color: var(--color-danger);
+}
+
+.ui-field__message--success {
+  color: var(--color-success);
+}

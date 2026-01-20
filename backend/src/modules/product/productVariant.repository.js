@@ -1,8 +1,8 @@
-const ProductVariant = require("./productVariant.schema");
+const ProductVariant = require("./variant.schema");
 
 class ProductVariantRepository {
-  async create(variant) {
-    return await ProductVariant.create(variant);
+  async create(data, session = null) {
+    return await ProductVariant.create([data], { session });
   }
 
   async findByIdActive(id) {
@@ -72,7 +72,7 @@ class ProductVariantRepository {
     return await ProductVariant.findOneAndUpdate(
       { _id: id, isDeleted: false },
       { isActive: false },
-      { new: true }
+      { new: true },
     );
   }
 
@@ -80,7 +80,7 @@ class ProductVariantRepository {
     return await ProductVariant.findOneAndUpdate(
       { _id: id, isDeleted: false },
       { isActive: true },
-      { new: true }
+      { new: true },
     );
   }
 
@@ -88,7 +88,7 @@ class ProductVariantRepository {
     return await ProductVariant.findOneAndUpdate(
       { _id: id, isDeleted: true },
       { isDeleted: false, isActive: true },
-      { new: true }
+      { new: true },
     );
   }
 
@@ -96,7 +96,7 @@ class ProductVariantRepository {
     return await ProductVariant.findOneAndUpdate(
       { _id: id, isDeleted: false },
       { isDeleted: true, isActive: false },
-      { new: true }
+      { new: true },
     );
   }
 
@@ -107,7 +107,7 @@ class ProductVariantRepository {
       {
         new: true,
         runValidators: true,
-      }
+      },
     );
   }
 
@@ -118,7 +118,7 @@ class ProductVariantRepository {
       {
         new: true,
         runValidators: true,
-      }
+      },
     );
   }
 }

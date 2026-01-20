@@ -1,0 +1,75 @@
+.ui-btn {
+  width: 100%;
+  padding: 6px 12px;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.3s ease;
+}
+
+.btn--sm {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.btn--md {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.btn--lg {
+  padding: 10px 16px;
+  font-size: 16px;
+}
+
+.btn--primary {
+  background-color: #f9bb01;
+  color: #fff;
+}
+
+.btn--outline {
+  background-color: #fff;
+  border: 1px solid #f9bb01;
+  color: #f9bb01;
+  z-index: 1;
+}
+
+.btn--outline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -140%;
+  width: 125%;
+  height: 100%;
+  background: #263b96;
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
+  z-index: -1;
+  transition: left 0.4s ease;
+}
+
+.btn--outline:hover {
+  color: #fff;
+  border-color: transparent;
+}
+
+.btn--outline:hover::before {
+  left: 0;
+}
+
+.btn--disabled,
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn--loading {
+  cursor: wait;
+}

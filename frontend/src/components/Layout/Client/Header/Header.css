@@ -89,7 +89,7 @@
 .categories-item:hover{
   color: var(--shop-color-hover);
   background-color: #f2f4fa;
-  border-left: 3px solid var(--shop-color-main);
+  border-left: 3px solid var(--color-brand-primary);
 }
 
 .categories-title {

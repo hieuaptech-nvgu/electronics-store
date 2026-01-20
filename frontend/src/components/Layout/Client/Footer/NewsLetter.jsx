@@ -1,7 +1,7 @@
 import "./Footer.css";
 import { Container, Row, Col } from "react-bootstrap";
-import { Send, Mail, Search } from "lucide-react";
-import Button from "../../../Button/Button";
+import { Send, Mail } from "lucide-react";
+import Button from "@ui/Button/Button";
 
 const NewsLetter = () => {
   return (
@@ -21,7 +21,6 @@ const NewsLetter = () => {
             </div>
           </Col>
 
-          {/* Phần input email + button */}
           <Col md={6}>
             <div className="newsletter-box">
               <div className="newsletter-email">

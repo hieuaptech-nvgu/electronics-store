@@ -4,10 +4,11 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import Logo from "../../../../assets/images/logo.png";
 import { Search } from "lucide-react";
-import Button from "../../../Button/Button";
 import { User } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import { ShoppingBag } from "lucide-react";
+import Field from "@ui/Field/Field";
+import Button from "@ui/Button/Button";
 
 const HeaderMain = () => {
   return (
@@ -20,16 +21,10 @@ const HeaderMain = () => {
             </Link>
           </Col>
           <Col md={6}>
-            <div className="box-search">
-              <input
-                className="header-search"
-                type="text"
-                placeholder="Tìm kiếm sản phẩm..."
-              />
-              <div className="search-action">
-                <Button content={<Search />} primary={true} />
-              </div>
-            </div>
+            <Field
+              placeholder="Nhập email"
+              iconRight={<Button children={<Search />} variant="primary" />}
+            />
           </Col>
           <Col md={3}>
             <div className="d-flex align-items-center gap-5">

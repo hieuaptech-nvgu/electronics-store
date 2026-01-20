@@ -13,9 +13,11 @@ database.connection();
 //init routers
 app.use("/api/user", require("./modules/user/user.route"));
 app.use("/api/auth", require("./modules/auth/auth.route"));
-app.use("/api/category", require("./modules/category/category.router"));
+app.use("/api/category", require("./modules/category/category.route"));
+app.use("/api/product", require("./modules/product/product.route"));
+app.use("/api/cart", require("./modules/cart/cart.route"))
 
-//handle error
+//handle error  
 app.use(handleError);
 
 module.exports = app;

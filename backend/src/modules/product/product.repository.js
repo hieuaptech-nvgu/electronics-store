@@ -1,5 +1,6 @@
 const Product = require("./product.schema");
 
+
 class ProductRepository {
   async create(product) {
     return await Product.create(product);
@@ -18,6 +19,14 @@ class ProductRepository {
       slug,
       isDeleted: false,
     });
+  }
+
+  async markHasVariants(productId, session = null) {
+    return await Product.updateOne(
+      { _id: productId },
+      { $set: { hasVariants: true } },
+      { session },
+    );
   }
 
   async findByIdIncludeDeleted(id) {
@@ -44,11 +53,19 @@ class ProductRepository {
     return await Product.findOne({ _id: id, isDeleted: false });
   }
 
+  async findWithQuery(filter, options) {
+    const { page = 1, limit = 10, sort = "-createdAt" } = options;
+    return await Product.find(filter)
+      .sort(sort)
+      .skip((page - 1) * limit)
+      .limit(limit);
+  }
+
   async deactivate(id) {
     return await Product.findOneAndUpdate(
       { _id: id, isDeleted: false },
       { isActive: false },
-      { new: true }
+      { new: true },
     );
   }
 
@@ -56,7 +73,7 @@ class ProductRepository {
     return await Product.findOneAndUpdate(
       { _id: id, isDeleted: false },
       { isActive: true },
-      { new: true }
+      { new: true },
     );
   }
 
@@ -64,7 +81,7 @@ class ProductRepository {
     return await Product.findOneAndUpdate(
       { _id: id, isDeleted: true },
       { isDeleted: false, isActive: true },
-      { new: true }
+      { new: true },
     );
   }
 
@@ -72,7 +89,7 @@ class ProductRepository {
     return await Product.findOneAndUpdate(
       { _id: id, isDeleted: false },
       { isDeleted: true, isActive: false },
-      { new: true }
+      { new: true },
     );
   }
 

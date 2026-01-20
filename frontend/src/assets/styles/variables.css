@@ -1,33 +1,18 @@
 :root {
-  --shop-color-bg: #f5f5f5;
-  --shop-color-main: #f9bb01;
-  --shop-color-text: #252a2b;
-  --shop-color-title: #333333;
-  --shop-color-hover: #263b96;
-  --shop-color-button: #f9bb01;
-  --shop-color-border: #eae4e8;
-  --home-category-bg-1: #faf1ff;
-  --home-category-bg-2: #faf4eb;
-  --home-category-bg-3: #f4e6e5;
-  --home-category-bg-4: #e6f2f4;
-  --home-category-bg-5: #fff6f6;
-  --home-coupon-bg: #ffffff;
-  --home-coupon-light: #ffffff;
-  --home-coupon-border: #f8d0d3;
-  --home-coupon-text: #333333;
-  --home-collection1-bg: #204956;
-  --home-collection1-icon: #ffe501;
-  --home-collection1-color-text: #ffffff;
-  --home-categorize-bg: #ffffff;
-  --home-categorize-color: #333333;
-  --home-collection2-bg: #000f54;
-  --home-collection2-title: #ff0000;
-  --home-collection3-bg: #e9dabe;
-  --footer-bg-color-1: #009dde;
-  --footer-bg-color-2: #ffffff;
-  --footer-bg-color-copyright: #ffffff;
-  --footer-color-title: #333333;
-  --footer-color-text-1: #ffffff;
-  --footer-color-text-2: #333333;
-  --footer-color-hover: #0081d3;
+
+  --color-brand-primary: #f9bb01;
+
+
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+  --color-warning: #ffc107;
+  --color-info: #0d6efd;
+
+  --color-bg-page: #ffffff;
+  --color-bg-section: #e2e2e2;
+  --color-bg-hover: #f2f4fa;
+
+
+  --color-text-primary: #222222;
+  --color-text-inverse: #ffffff;
 }

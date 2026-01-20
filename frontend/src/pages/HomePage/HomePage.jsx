@@ -8,6 +8,7 @@ import Banner1 from "../../assets/images/banner_top_1_img_large.jpg";
 import Banner2 from "../../assets/images/banner_top_2_img_large.jpg";
 import Banner3 from "../../assets/images/banner_top_3_img_large.jpg";
 import "./HomePage.css";
+import Button from "../../components/ui/Button/Button";
 
 const HomePage = () => {
   const slides = [
@@ -30,7 +31,7 @@ const HomePage = () => {
           <div className="box-heroes">
             <BaseCarousel slides={slides} fade interval={4000} />
           </div>
-        </Col>  
+        </Col>
         <Col md={3}>
           <div className="box-banner">
             {banner.map((i) => (
@@ -39,7 +40,11 @@ const HomePage = () => {
           </div>
         </Col>
       </Row>
-      <section></section>
+      <section>
+        <Button variant="outline" size="lg">
+          Large
+        </Button>
+      </section>
     </Container>
   );
 };

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const attributeSchema = require("../shared/attribute.schema");
+const attributeSchema = require("./attribute.schema");
 
 const productVariantSchema = new mongoose.Schema(
   {
